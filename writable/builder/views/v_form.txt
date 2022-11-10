@@ -1,0 +1,24 @@
+$initialWidget
+<div class="card border-success">
+    <div class="card-body">
+        <?=form_open("$tableName/save",["method"=>"post","id"=>"form_$tableName"])?>
+        <?= form_hidden("$primaryKey") ?>
+        $formHtml
+        <?= $form->endForm() ?>
+    </div>
+    <div class="card-footer bg-success">
+        <?= form_button([
+            "name"      => "simpan",
+            "class"     => "btn btn-info simpan",
+            "type"      => "button",
+            "onclick"   => "$('#form_$tableName').submit()"
+        ], "SIMPAN") ?>
+        <?= form_button([
+            "name"          => "cancel",
+            "class"         => "btn btn-danger cancel-form",
+            "type"          => "button",
+            "data-target"   => "list-data",
+            "data-close"    => "form-data",
+        ], "BATAL") ?>
+    </div>
+</div>

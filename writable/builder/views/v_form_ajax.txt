@@ -1,0 +1,44 @@
+$initialWidget
+<div class="card border-success">
+    <div class="card-body">
+        <?= $form->formAjax_open([
+            "extra"     => ["id" => "form_$tableName"],
+            "url"       => "$tableName/save",
+            "data"      => "$(this).serialize()",
+            "onSuccess" => 'function(data) {
+                if (data.message == "ok") {
+                    Swal.fire("Data Berhasil Disimpan!", "", "success");
+                    location.reload(true);
+                }else{
+                    Swal.fire("GAGAL!", data.messages.error, "error");
+                }
+            }',
+            "onFail"    => 'function(jqXHR, textStatus, errorThrown) {
+                if (errorThrown == "timeout") {
+                    location.reload(true);
+                } else {
+                    alert(errorThrown);
+                }
+            }',
+            "timeOut"   => 5000
+        ]) ?>
+        <?= form_hidden("$primaryKey") ?>
+        $formHtml
+        <?= $form->endForm() ?>
+    </div>
+    <div class="card-footer bg-success">
+        <?= form_button([
+            "name"      => "simpan",
+            "class"     => "btn btn-info simpan",
+            "type"      => "button",
+            "onclick"   => "$('#form_$tableName').submit()"
+        ], "SIMPAN") ?>
+        <?= form_button([
+            "name"          => "cancel",
+            "class"         => "btn btn-danger cancel-form",
+            "type"          => "button",
+            "data-target"   => "list-data",
+            "data-close"    => "form-data",
+        ], "BATAL") ?>
+    </div>
+</div>

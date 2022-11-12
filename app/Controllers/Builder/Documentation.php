@@ -1,5 +1,5 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Builder;
 use App\Controllers\Core\CoreController;
 use App\Libraries\Datatable;
 
@@ -7,22 +7,22 @@ class Documentation extends CoreController
 {
     public function index()
     {
-        return $this->get_theme('documentation/formbasic',null,get_class($this));
+        return $this->get_theme('builder/documentation/formbasic',null,get_class($this));
     }
 
     public function form_advance()
     {
-        return $this->get_theme('documentation/formadvance',null,get_class($this));
+        return $this->get_theme('builder/documentation/formadvance',null,get_class($this));
     }
 
     public function datatable_helper()
     {
-        return $this->get_theme('documentation/datatable_helper',null,get_class($this));
+        return $this->get_theme('builder/documentation/datatable_helper',null,get_class($this));
     }
 
     public function html_helper()
     {
-        return $this->get_theme('documentation/html_helper',null,get_class($this));
+        return $this->get_theme('builder/documentation/html_helper',null,get_class($this));
     }
 
     public function data_row()
@@ -34,7 +34,7 @@ class Documentation extends CoreController
                 "attr"              => $attr,
                 "filter"            => [],
                 "model"             => [
-                    "name"          => "CobaModel",
+                    "name"          => "builder\DocumentationModel",
                     "resource"      => "get_dataTable"
                 ],
                 "rightTool"         => function($param){
@@ -43,12 +43,12 @@ class Documentation extends CoreController
                         $resp = create_btnAction([
                             "update"=>[
                                 "id_key"        => $param["id_key"],
-                                "url"           => "documentation/find_one",
-                                "loadForm"      => "documentation/show_form"
+                                "url"           => "builder/documentation/find_one",
+                                "loadForm"      => "builder/documentation/show_form"
                             ],
                             "delete"=>[
                                 "id_key"  => $param["id_key"],
-                                "url"     => "documentation/delete_row"
+                                "url"     => "builder/documentation/delete_row"
                             ]
                         ]);
                     }else{

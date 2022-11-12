@@ -233,9 +233,46 @@
 <section>
     <form action="<?=site_url("builder/beranda/generate_db")?>" method="post">
         <h1>GENERATE DATABASE</h1>
-
-        <p>Database Name</p>
-        <input type="text" name="db_name" id="db_name">
+        <table>
+            <tr>
+                <td>Host</td>
+                <td>:</td>
+                <td><input type="text" name="host_name" id="host_name"></td>
+            </tr>
+            <tr>
+                <td>UserDB</td>
+                <td>:</td>
+                <td><input type="text" name="user_name" id="user_name"></td>
+            </tr>
+            <tr>
+                <td>PasswordDB</td>
+                <td>:</td>
+                <td><input type="text" name="user_password" id="user_password"></td>
+            </tr>
+            <tr>
+                <td>PortDB</td>
+                <td>:</td>
+                <td><input type="text" name="port_db" id="port_db"></td>
+            </tr>
+            <tr>
+                <td>Database</td>
+                <td>:</td>
+                <td><input type="text" name="db_name" id="db_name"></td>
+            </tr>
+            <tr>
+                <td colspan="3">DEVELOPER</td>
+            </tr>
+            <tr>
+                <td>Username</td>
+                <td>:</td>
+                <td><input type="text" name="user_dev" id="user_dev"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>:</td>
+                <td><input type="text" name="password_dev" id="password_dev"></td>
+            </tr>
+        </table>
         <button id="create_database">Create Database</button>
     </form>
     <p>Menuju ke halaman dokumentasi dan CRUD Builder <a href="<?=site_url("builder/builderform")?>">Builder Form</a> !</p>

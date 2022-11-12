@@ -16,7 +16,7 @@ $widget->init();
                             "label"     => "List Table",
                             "option"    => [
                                 "data"  => [
-                                    "model"      => "BuilderModel",
+                                    "model"      => "Builder\BuilderModel",
                                     "custom"     => "get_all_table"
                                 ]
                             ]
@@ -73,12 +73,6 @@ $widget->init();
                         ?>
                     </div>
                 </div>
-
-
-
-
-
-
             </div>
             <div class="card-footer">
                 <?= form_button([

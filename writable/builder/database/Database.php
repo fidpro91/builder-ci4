@@ -32,14 +32,14 @@ class Database extends Config
      */
     public $default = [
         'DSN'      => '',
-        'hostname' => 'localhost',
-        'username' => 'root',
-        'password' => '',
-        'database' => 'db_ci4',
+        'hostname' => '%HOSTNAME%',
+        'username' => '%USERNAME%',
+        'password' => '%USERPASSWORD%',
+        'database' => '%DBNAME%',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
-        'DBDebug'  => true,
+        'DBDebug'  => (ENVIRONMENT !== 'production'),
         'charset'  => 'utf8',
         'DBCollat' => 'utf8_general_ci',
         'swapPre'  => '',
@@ -47,7 +47,7 @@ class Database extends Config
         'compress' => false,
         'strictOn' => false,
         'failover' => [],
-        'port'     => '3306',
+        'port'     => '%PORTDB%',
     ];
 
     /**

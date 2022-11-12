@@ -39,6 +39,7 @@ abstract class CoreController extends Controller
     protected $form;
     protected $pagename;
     protected $breadcumbs;
+    protected $session;
     /**
      * Constructor.
      */
@@ -67,7 +68,11 @@ abstract class CoreController extends Controller
         $this->pagename       = class_basename($router->controllerName());
         $this->breadcumbs           = '<li class="breadcrumb-item"><a href="javascript:void(0)">'.$this->pagename.'</a></li>';
         $this->breadcumbs           .= '<li class="breadcrumb-item active">'.$router->methodName().'</li>';
-
+        $this->session              = session();
+        
+        if (empty($this->session->user_id)) {
+            redirect()->to("builder/builderform/login");
+        }
         // $this->set_breadcumb($breadcumbs);
         // E.g.: $this->session = \Config\Services::session();
     }

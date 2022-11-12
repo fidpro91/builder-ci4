@@ -2,7 +2,7 @@
 namespace App\Controllers\Builder;
 use App\Controllers\Core\CoreController;
 use CodeIgniter\API\ResponseTrait;
-// use App\Models\BuilderModel;
+use App\Models\Builder\User_developerModel;
 use App\Libraries\Formjos;
 use App\Libraries\Formjos2;
 
@@ -22,6 +22,26 @@ class Builderform extends CoreController
         return $this->get_theme('builder/index',$data,get_class($this));
     }
 
+    public function login()
+    {
+        return view("builder/login");
+    }
+
+    public function cek_login()
+    {
+        $post = $this->request->getGet();
+        $user = $this->db->table("user_developer")->getWhere([
+            "username_developer"      => $post['username_log'],
+            "password_encrypted"    => md5($post['password_log']),
+        ])->getRowArray();
+        if ($user) {
+            $this->session->set($user);
+            return redirect()->to("builder/builderform/index");
+        }else{
+            return redirect()->back();
+        }
+    }
+
     public function get_field_table($table)
     {
         $data['form']       = new Formjos();
@@ -33,14 +53,20 @@ class Builderform extends CoreController
     {
         $post = $this->request->getPost();
         $data = $this->db->getFieldData($post['list_table']);
+        $report = [];
+        $report["table_name"]   = $post['list_table'];
+        $report["user_created"] = $this->session->user_id;
         if (isset($post["is_controller"])) {
+            $report["controller"] = 1;
             $this->_createController($post['list_table'],$data);
         }
         if (isset($post["is_model"])) {
+            $report["model"] = 1;
             $this->_createModel($post['list_table'],$data);
         }
         
         if (isset($post["is_view"])) {
+            $report["views"] = 1;
             $this->_createModel($post['list_table'],$data);
             $patchDir = APPPATH.'Views/'.($post['list_table']);
             if (!is_dir($patchDir)) {
@@ -52,6 +78,7 @@ class Builderform extends CoreController
             $this->_createViewIndex($post['list_table'],$patchDir);
             $this->_createViewForm($post['list_table'],$post,$data,$patchDir);
         }
+        $this->db->table('table_builded')->insert($report);
         $resp = [
             "message"   => "ok",
             "resp"      => [

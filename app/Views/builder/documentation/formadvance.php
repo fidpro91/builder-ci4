@@ -17,7 +17,7 @@ $widget->init();
                 "label"     => "FORM SELECT2 WITH MODEL",
                 "option"    => [
                     "data"  => [
-                        "model"     => "CobaModel",
+                        "model"     => "builder\DocumentationModel",
                         "column"    => [
                             "menu_id",
                             "menu_name"
@@ -32,7 +32,7 @@ $widget->init();
                 "label"     => "FORM SELECT2 MULTI WITH MODEL",
                 "option"    => [
                     "data"  => [
-                        "model"     => "CobaModel",
+                        "model"     => "builder\DocumentationModel",
                         "column"    => [
                             "menu_id",
                             "menu_name"

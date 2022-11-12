@@ -108,7 +108,6 @@ function create_table($name, $modelName, $attr = array(),$ext=[])
 					<tr>
 					<th><input type="checkbox" name="select_all" value="1" id="checkAll"></th>
 					<th>NO</th>';
-	
 	if (is_array($modelName)) {
 		$model = model("App\Models\\".$modelName['model']."");
 		$header = $model->{$modelName['col']};

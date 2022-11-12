@@ -1,66 +1,54 @@
 
 <div class="card border-success">
     <div class="card-body">
-        <?= $form->formAjax_open([
-            "extra"     => ["id" => "form_biodata"],
-            "url"       => "biodata/save",
-            "data"      => "$(this).serialize()",
-            "onSuccess" => 'function(data) {
-                if (data.message == "ok") {
-                    Swal.fire("Data Berhasil Disimpan!", "", "success");
-                    location.reload(true);
-                }else{
-                    Swal.fire("GAGAL!", data.messages.error, "error");
-                }
-            }',
-            "onFail"    => 'function(jqXHR, textStatus, errorThrown) {
-                if (errorThrown == "timeout") {
-                    location.reload(true);
-                } else {
-                    alert(errorThrown);
-                }
-            }',
-            "timeOut"   => 5000
-        ]) ?>
-        <?= form_hidden("id") ?>
+        <?=form_open("table_builded/save",["method"=>"post","id"=>"form_table_builded"])?>
+        <?= form_hidden("id_task") ?>
         
                         <?=
                         $form->form_group([
                             "type"      => "input",
-                            "id"        => "nama",
-                            "label"     => "nama"
+                            "id"        => "table_name",
+                            "label"     => "table_name"
                         ]);
                         ?>
                         
                         <?=
                         $form->form_group([
                             "type"      => "input",
-                            "id"        => "tanggal",
-                            "label"     => "tanggal"
+                            "id"        => "controller",
+                            "label"     => "controller"
                         ]);
                         ?>
                         
                         <?=
                         $form->form_group([
                             "type"      => "input",
-                            "id"        => "jenis_kelamin",
-                            "label"     => "jenis_kelamin"
+                            "id"        => "model",
+                            "label"     => "model"
                         ]);
                         ?>
                         
                         <?=
                         $form->form_group([
                             "type"      => "input",
-                            "id"        => "alamat",
-                            "label"     => "alamat"
+                            "id"        => "views",
+                            "label"     => "views"
                         ]);
                         ?>
                         
                         <?=
                         $form->form_group([
                             "type"      => "input",
-                            "id"        => "gaji",
-                            "label"     => "gaji"
+                            "id"        => "user_created",
+                            "label"     => "user_created"
+                        ]);
+                        ?>
+                        
+                        <?=
+                        $form->form_group([
+                            "type"      => "input",
+                            "id"        => "created_at",
+                            "label"     => "created_at"
                         ]);
                         ?>
                         
@@ -71,7 +59,7 @@
             "name"      => "simpan",
             "class"     => "btn btn-info simpan",
             "type"      => "button",
-            "onclick"   => "$('#form_biodata').submit()"
+            "onclick"   => "$('#form_table_builded').submit()"
         ], "SIMPAN") ?>
         <?= form_button([
             "name"          => "cancel",

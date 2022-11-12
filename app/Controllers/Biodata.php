@@ -37,8 +37,9 @@ class Biodata extends CoreController
                 "rightTool"         => function($param){
                     return create_btnAction([
                         "update"=>[
-                            "id_key"  => $param["id_key"],
-                            "url"     => "biodata/find_one"
+                            "id_key"        => $param["id_key"],
+                            "url"           => "biodata/find_one",
+                            "loadForm"      => "biodata/show_form"
                         ],
                         "delete"=>[
                             "id_key"  => $param["id_key"],

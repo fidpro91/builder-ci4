@@ -96,7 +96,7 @@ class Datatable
 			foreach ($fields as $key => $value) {
 				if (is_array($value)) {
 					if (isset($value['custom'])){
-						$obj[] = call_user_func($value['custom'],$row[$key]);
+						$obj[] = call_user_func($value['custom'],$row);
 					}else{
 						$obj[] = $row[$key];
 					}

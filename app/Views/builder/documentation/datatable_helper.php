@@ -10,12 +10,12 @@ $dataTable = new Datatable();
 <H4>DATA TABLE</H4>
 <?=$dataTable->render([
     "id"        =>"table_menu",
-    "model"     => "CobaModel"
+    "model"     => "builder\DocumentationModel"
 ])?>
 <H4>DATA TABLE AJAX</H4>
 <?=$dataTable->renderAjax([
     "id"            =>"table_menu_2",
-    "model"         => "CobaModel",
+    "model"         => "builder\DocumentationModel",
     "dataTable"     => '
     { 
         "processing": true, 
@@ -23,7 +23,7 @@ $dataTable = new Datatable();
         "order": [], 
         "scrollX": true,
         "ajax": {
-            "url": "'.site_url('documentation/data_row').'",
+            "url": "'.site_url('builder/documentation/data_row').'",
             "type": "POST"
         },
         "columnDefs": [

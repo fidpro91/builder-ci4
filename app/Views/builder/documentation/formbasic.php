@@ -30,7 +30,7 @@ $form = new Formjos();
         "label"     => "FORM SELECT MODEL",
         "option"    => [
             "data"  => [
-                "model"     => "CobaModel",
+                "model"     => "builder\DocumentationModel",
                 "column"    => [
                     "menu_id",
                     "menu_name"

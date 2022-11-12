@@ -1,25 +1,25 @@
 <?php
-namespace App\Controllers;
+namespace App\Controllers\Builder;
 use App\Controllers\Core\CoreController;
 use CodeIgniter\API\ResponseTrait;
-use App\Models\$modelName;
+use App\Models\Builder\User_developerModel;
 use App\Libraries\Datatable;
 use App\Libraries\Formjos;
 use App\Libraries\Formjos2;
 
-class $className extends CoreController
+class User_developer extends CoreController
 {
     use ResponseTrait;
     protected $model;
     public function __construct()
     {
-        $this->model = new $modelName();
+        $this->model = new User_developerModel();
     }
 
     public function index()
     {
         $data['dataTable'] = new Datatable();
-        return $this->get_theme('$urlFirst/index',$data,get_class($this));
+        return $this->get_theme('builder/user_developer/index',$data,get_class($this));
     }
 
     public function get_data()
@@ -31,19 +31,19 @@ class $className extends CoreController
                 "attr"              => $attr,
                 "filter"            => [],
                 "model"             => [
-                    "name"          => "$modelName",
+                    "name"          => "builder\User_developerModel",
                     "resource"      => "get_dataTable"
                 ],
                 "rightTool"         => function($param){
                     return create_btnAction([
                         "update"=>[
                             "id_key"        => $param["id_key"],
-                            "url"           => "$urlFirst/find_one",
-                            "loadForm"      => "$urlFirst/show_form"
+                            "url"           => "builder/user_developer/find_one",
+                            "loadForm"      => "builder/user_developer/show_form"
                         ],
                         "delete"=>[
                             "id_key"  => $param["id_key"],
-                            "url"     => "$urlFirst/delete_row"
+                            "url"     => "builder/user_developer/delete_row"
                         ]
                     ]);
                 }
@@ -59,9 +59,9 @@ class $className extends CoreController
         foreach ($this->model->allowedFields as $key => $value) {
             $input[$value] = (!empty($post[$value])?$post[$value]:null);
         }
-
-        if ($post["$primaryKey"]) {
-            $crud = $this->model->update($post["$primaryKey"],$input);
+        $input["password_encrypted"] = md5($input["password_developer"]);
+        if ($post["user_id"]) {
+            $crud = $this->model->update($post["user_id"],$input);
         }else{
             $crud = $this->model->insert($input);
         }
@@ -77,7 +77,7 @@ class $className extends CoreController
             }
         }else{
             // jika form non ajax
-            return  redirect()->to('/$urlFirst');
+            return  redirect()->to('/builder/user_developer');
         }
     }
 
@@ -97,13 +97,13 @@ class $className extends CoreController
 
     public function find_one($id)
     {
-        return $this->respond($this->model->where('$primaryKey', $id)->first());
+        return $this->respond($this->model->where('user_id', $id)->first());
     }
 
     public function show_form()
     {
         $data['form']   = new Formjos();
         $data['widget'] = new Formjos2();
-        return view("$urlFirst/form",$data);
+        return view("builder/user_developer/form",$data);
     }
 }

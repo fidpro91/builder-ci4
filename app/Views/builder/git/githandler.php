@@ -12,11 +12,11 @@
                 // location.reload(true);
             }',
             "onFail"    => 'function(jqXHR, textStatus, errorThrown) {
-                if (errorThrown == "timeout") {
+                /* if (errorThrown == "timeout") {
                     location.reload(true);
                 } else {
                     alert(errorThrown);
-                }
+                } */
             }',
             "timeOut"   => 5000
         ]) ?>

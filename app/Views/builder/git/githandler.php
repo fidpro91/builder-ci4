@@ -7,6 +7,7 @@
             "url"       => "builder/gitcontroller/git_run",
             "data"      => "$(this).serialize()",
             "dataType"  => "text",
+            "async"     => "false",
             "onSuccess" => 'function(data) {
                 alert(data);
                 // location.reload(true);

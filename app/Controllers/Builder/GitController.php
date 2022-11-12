@@ -17,7 +17,6 @@ class GitController extends CoreController
     {
         $post = $this->request->getPost();
         $output = shell_exec("cd /laragon/www/ci4 && git add . && git commit -m \"".$post['commit']."\" &&git ".$post['git_type']." origin ".$post['branch_name']."");
-        echo "<pre>" . $output . "</pre>";
-        $this->respond($output,200);
+        $this->respond("<pre>" . $output . "</pre>",200);
     }
 }

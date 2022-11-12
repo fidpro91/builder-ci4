@@ -6,6 +6,7 @@
             "extra"     => ["id" => "form_git"],
             "url"       => "builder/gitcontroller/git_run",
             "data"      => "$(this).serialize()",
+            "dataType"  => "html",
             "onSuccess" => 'function(data) {
                 Swal.fire(data, "", "success");
                 // location.reload(true);

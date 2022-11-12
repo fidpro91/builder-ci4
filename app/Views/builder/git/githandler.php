@@ -6,18 +6,9 @@
             "extra"     => ["id" => "form_git"],
             "url"       => "builder/gitcontroller/git_run",
             "data"      => "$(this).serialize()",
-            "dataType"  => "html",
-            "async"     => "false",
             "onSuccess" => 'function(data) {
-                alert(data);
+                alert(data.message);
                 // location.reload(true);
-            }',
-            "onFail"    => 'function(jqXHR, textStatus, errorThrown) {
-                /* if (errorThrown == "timeout") {
-                    location.reload(true);
-                } else {
-                    alert(errorThrown);
-                } */
             }',
             "timeOut"   => 5000
         ]) ?>

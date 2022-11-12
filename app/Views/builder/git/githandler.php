@@ -8,7 +8,7 @@
             "data"      => "$(this).serialize()",
             "onSuccess" => 'function(data) {
                 Swal.fire(data.message, "", "success");
-                location.reload(true);
+                // location.reload(true);
             }',
             "onFail"    => 'function(jqXHR, textStatus, errorThrown) {
                 if (errorThrown == "timeout") {

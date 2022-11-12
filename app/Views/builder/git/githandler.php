@@ -7,7 +7,7 @@
             "url"       => "builder/gitcontroller/git_run",
             "data"      => "$(this).serialize()",
             "onSuccess" => 'function(data) {
-                Swal.fire(data.message, "", "success");
+                Swal.fire(data.message);
                 location.reload(true);
             }',
             "onFail"    => 'function(jqXHR, textStatus, errorThrown) {

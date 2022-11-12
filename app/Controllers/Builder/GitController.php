@@ -20,6 +20,6 @@ class GitController extends CoreController
         $data = [
             "message" => "<pre>" . $output . "</pre>"
         ];
-        // return json_encode($data);
+        return json_encode($data);
     }
 }

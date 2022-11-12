@@ -8,7 +8,7 @@
             "data"      => "$(this).serialize()",
             "dataType"  => "html",
             "onSuccess" => 'function(data) {
-                Swal.fire(data, "", "success");
+                alert(data);
                 // location.reload(true);
             }',
             "onFail"    => 'function(jqXHR, textStatus, errorThrown) {

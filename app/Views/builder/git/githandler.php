@@ -7,8 +7,15 @@
             "url"       => "builder/gitcontroller/git_run",
             "data"      => "$(this).serialize()",
             "onSuccess" => 'function(data) {
-                alert(data.message);
+                Swal.fire(data.message, "", "success");
                 // location.reload(true);
+            }',
+            "onFail"    => 'function(jqXHR, textStatus, errorThrown) {
+                if (errorThrown == "timeout") {
+                    location.reload(true);
+                } else {
+                    alert(errorThrown);
+                }
             }',
             "timeOut"   => 5000
         ]) ?>

@@ -121,6 +121,7 @@ class Formjos
                         "url": "'.base_url($attr['url']).'",
                         "success": '.$attr['onSuccess'].',
                         timeout: '.$attr["timeOut"].',
+                        error: '.$attr["onFail"].'
                     });
                 }
             })
